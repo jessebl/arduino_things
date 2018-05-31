@@ -9,23 +9,37 @@ bool blue_on = true;
 bool green_on = true;
 bool red_on = true;
 
-void eval_buttons()
+void eval_bools()
 {
   // Blue eval
   if(digitalRead(blue_button) == LOW)
-  { digitalWrite(blue_led, LOW); }
-  else
-  { digitalWrite(blue_led, HIGH); }
+  { blue_on = !blue_on; }
   // Green eval
   if(digitalRead(green_button) == LOW)
-  { digitalWrite(green_led, LOW); }
-  else
-  { digitalWrite(green_led, HIGH); }
+  { green_on = !green_on; }
   // Red eval
   if(digitalRead(red_button) == LOW)
-  { digitalWrite(red_led, LOW); }
+  { red_on = !red_on; }
+}
+
+void eval_buttons()
+{
+  eval_bools();
+  // Blue eval
+  if(blue_on)
+  { digitalWrite(blue_led, HIGH); }
   else
+  { digitalWrite(blue_led, LOW); }
+  // Green eval
+  if(green_on)
+  { digitalWrite(green_led, HIGH); }
+  else
+  { digitalWrite(green_led, LOW); }
+  // Red eval
+  if(red_on)
   { digitalWrite(red_led, HIGH); }
+  else
+  { digitalWrite(red_led, LOW); }
 }
 
 void setup()
@@ -42,4 +56,5 @@ void setup()
 void loop()
 {
   eval_buttons();
+  delay(125);
 }
