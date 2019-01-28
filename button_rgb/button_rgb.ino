@@ -44,6 +44,7 @@ void eval_buttons()
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(red_led, OUTPUT);
   pinMode(green_led, OUTPUT);
   pinMode(blue_led, OUTPUT);
@@ -56,5 +57,8 @@ void setup()
 void loop()
 {
   eval_buttons();
+  Serial.println(red_on);
+  Serial.println(green_on);
+  Serial.println(blue_on);
   delay(125);
 }
